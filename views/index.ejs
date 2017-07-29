@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Book trading - FCC</title>
+        <link href="common.css" rel="stylesheet">
+        <link href="index.css" rel="stylesheet">
+    </head>
+    <body>
+        <% include partials/navbar %>
+        
+        <% if (currentUser) { %>
+            <input id="is-logged-in" type="hidden" value="<%= currentUser.username %>"></input>
+        <% } %>
+        <div class="main">
+            <h1>Books available for trade</h1>
+            <div class="books-list"></div>
+        </div>
+        
+        <script type="text/javascript" src="ajax_calls.js"></script>
+        <script type="text/javascript" src="index.js"></script>
+    </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Book trading - FCC</title>
+        <link href="common.css" rel="stylesheet">
+        <link href="login.css" rel="stylesheet">
+    </head>
+    <body>
+        <% include partials/navbar %>
+        
+        <div class="main">
+            <div class="split-panel">
+                <h2>Log in</h2>
+                <form action="/login" method="POST">
+                    <div>
+                        <input name="username" type="text" placeholder="User name"></input>
+                    </div>
+                    <div>
+                        <input name="password" type="password" placeholder="Password"></input>
+                    </div>
+                    <button>Login</button>
+                </form>
+            </div>
+            <div class="split-panel">
+                <h2>Register</h2>
+                <form action="/register" method="POST">
+                    <div>
+                        <input name="username" type="text" placeholder="User name"></input>
+                    </div>
+                    <div>
+                        <input name="password" type="password" placeholder="Password"></input>
+                    </div>
+                    <button>Register</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

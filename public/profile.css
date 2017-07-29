@@ -1,0 +1,90 @@
+.inactive {
+    display: none;
+}
+
+.book-req-header, .book-give-header {
+    padding: 10px;
+    background: #A53860;
+    color: #f7f0f0;
+    cursor: pointer;
+    border: 2px solid #A53860;
+    box-shadow: 5px 5px 10px #353238;
+}
+
+.book-req-header:hover, .book-give-header:hover {
+    opacity: 0.8;
+}
+
+.book-req, .book-give {
+    display: none;
+    margin: 10px 0;
+}
+
+.book-img-container {
+    background: #353238;
+    box-shadow: 5px 5px 10px #353238;
+    padding: 15px;
+}
+
+.user-info {
+    margin: 20px 0;
+}
+
+.location-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5em;
+    margin: 40px 30px;
+}
+.location-info div {
+    margin: 10px 0;
+}
+
+.current-book-all {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 15px 30px;
+    background: #353238;
+    box-shadow: 5px 5px 10px #353238;
+    overflow: auto;
+}
+
+.current-book {
+    display: table;
+    position: relative;
+    margin: 10px;
+}
+
+.current-book-details {
+    display: flex;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgb(0,0,0);
+    background: rgba(0,0,0,0.8);
+    height: 100%;
+    width: inherit;
+    color: #000;
+    opacity: 0;
+}
+
+span.current-book-details span {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.current-book:hover span.current-book-details {
+    opacity: 1;
+}
+
+.one-book-add {
+    display: flex;
+    flex-direction: row;
+    font-size: 0.8em;
+    margin: 10px 0;
+}
+.one-book-add div {
+    margin-left: 15px;
+}

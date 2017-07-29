@@ -1,0 +1,18 @@
+.books-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.one-book {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 30%;
+    margin: 10px;
+    font-size: 0.8em;
+}
+
+.one-book-details {
+    margin-left: 10px;
+}

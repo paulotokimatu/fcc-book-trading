@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Book trading - FCC</title>
+        <link href="/common.css" rel="stylesheet">
+        <link href="/profile.css" rel="stylesheet">
+    </head>
+    <body>
+        <% include partials/navbar %>
+        
+        <div class="main">
+            <% if (currentUser && currentUser.username === user.username) { %>
+                <% if (user.books2receive.length > 0) { %>
+                    <div class="book-req-header">
+                        Books requested: <%= user.books2receive.length %>
+                    </div>
+                    <div class="book-req-container inactive">
+                        <% if (user.books2receive.length > 0) { %>
+                            <div class="book-img-container">
+                                <% for(var i = 0; i < user.books2receive.length; i++) { %>
+                                    <img class ="book-req-img" src="<%= user.books2receive[i].image %>" id="<%= user.books2receive[i]._id %>" >
+                                <% } %>
+                            </div>
+                            <div class="book-details">
+                                <% for(var i = 0; i < user.books2receive.length; i++) { %>
+                                    <div class="book-req" id="book-req-<%= user.books2receive[i]._id %>">
+                                        <form action="/trade/cancel" method="POST">
+                                            <strong>Title:</strong> <%= user.books2receive[i].title %>
+                                            <strong>Owner:</strong> <a href="/users/<%= user.books2receive[i].owner %>" ><%= user.books2receive[i].owner %></a>
+                                            <strong> | </strong>
+                                            <input name="_id" type="hidden" value="<%= user.books2receive[i]._id %>"></input>
+                                            <button>Cancel request</button>
+                                        </form>
+                                    </div>
+                                <% } %>
+                            </div>
+                        <% } %>
+                    </div>
+                <% } %>
+                
+                <% if (user.books2give.length > 0) { %>        
+                    <div class="book-give-header">
+                        Books waiting for your decision: <%= user.books2give.length %>
+                    </div>
+                    <div class="book-give-container inactive">
+                        <% if (user.books2give.length > 0) { %>
+                            <div class="book-img-container">
+                                <% for(var i=0; i < user.books2give.length; i++) { %>
+                                    <img class ="book-give-img" src="<%= user.books2give[i].image %>" id="<%= user.books2give[i]._id %>" >
+                                <% } %>
+                            </div>
+                            <div class="book-details">
+                                <% for(var i=0; i < user.books2give.length; i++) { %>
+                                    <div class="book-give" id="book-give-<%= user.books2give[i]._id %>">
+                                        <form action="/trade/owner_response" method="POST">
+                                            <strong>Title:</strong> <%= user.books2give[i].title %>
+                                            <strong>| Request from:</strong> <%= user.books2give[i].requestedBy %>
+                                            <strong> | </strong>
+                                            <input name="_id" type="hidden" value="<%= user.books2give[i]._id %>"></input>
+                                            <input name="newOwner" type="hidden" value="<%= user.books2give[i].requestedBy %>"></input>
+                                            <input name="oldOwner" type="hidden" value="<%= user.username %>"></input>
+                                            <input type="submit" value="accept" name="accept" />
+                                            <input type="submit" value="cancel" name="cancel" />
+                                        </form>
+                                    </div>
+                                <% } %>
+                            </div>
+                        <% } %>    
+                    </div>
+                <% } %>
+            <% } %>
+            
+            <div class="user-info">
+                <div class="location-info">
+                    <span>
+                        <strong>Username: </strong><%= user.username %>
+                    </span>
+                    <span>
+                        <strong>City: </strong><%= user.location.city  %>
+                    </span>
+                    <span>
+                        <strong>State: </strong><%= user.location.state %>
+                    </span>
+                </div>
+                
+                <% if (currentUser && currentUser.username === user.username) { %>
+                    <hr>
+                    <div>
+                        <h3>Edit info</h3>
+                        <form action="/users/edit" method="post">
+                            City: <input name="city" type="text" value="<%= user.location.city %>"></input>
+                            State: <input name="state" type="text" value="<%= user.location.state %>"></input>
+                            <input name="username" value="<%= user.username  %>" type="hidden"></input>
+                            <input type="submit"></input>
+                        </form>
+                    </div>
+                    <br>
+                <% } %>
+                
+                <hr>
+                <div class="current-book-container">
+                    <h3>Books of the user</h3>
+                    <div class="current-book-all">
+                        <% for(var i=0; i < user.books.length; i++) { %>
+                            <span class="current-book">
+                                <img src="<%= user.books[i].image %>" alt="<%= user.books[i].title %>">
+                                <span class="current-book-details"><span><%= user.books[i].title %></span></span>
+                            </span>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+            
+            <% if (currentUser && currentUser.username === user.username) { %>
+                <hr>
+                <h3>Add new book</h3>
+                <div>
+                    <input id="query-search" type="text" placeholder="Search for books"></input>
+                    <button id="submit-search">Submit</button>
+                </div>
+                <div class="list-books-add"></div>
+            <% } %>
+            
+        </div>
+        
+        <script type="text/javascript" src="/ajax_calls.js"></script>
+        <script type="text/javascript" src="/profile.js"></script>
+    </body>
+</html>

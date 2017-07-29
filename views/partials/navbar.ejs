@@ -1,0 +1,11 @@
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+<div class="navbar">
+    <a href="/"><span id="name-app">Book trading</span></a>
+    <span id="user-control">Hello, 
+        <% if (currentUser) {%>
+            <%= currentUser.username %> | <a href="/profile">Profile</a> | <a href="/logout">Logout</a>
+        <% } else {%>
+            stranger | <a href="/login">Log in or register</a>
+        <% }%>
+    </span>
+</div>
