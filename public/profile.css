@@ -70,8 +70,9 @@
 }
 
 span.current-book-details span {
-    display: flex;
     align-items: center;
+    color: white;
+    display: flex;
     text-align: center;
 }
 

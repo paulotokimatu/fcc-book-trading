@@ -16,7 +16,7 @@ function DbHandler() {
         Users.register(new Users({username: req.body.username}), req.body.password, (err, user) => {
             if (err) {
                 console.log("Problem when creating user");
-                return res.render("register");
+                return res.redirect("/login");
             }
             else {
                 passport.authenticate("local")(req, res, () => {
