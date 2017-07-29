@@ -10,7 +10,7 @@
         <% include partials/navbar %>
         
         <div class="main">
-            <% if (currentUser && currentUser.username === user.username) { %>
+            <% if (currentUser && user && currentUser.username === user.username) { %>
                 <% if (user.books2receive.length > 0) { %>
                     <div class="book-req-header">
                         Books requested: <%= user.books2receive.length %>
@@ -84,7 +84,7 @@
                     </span>
                 </div>
                 
-                <% if (currentUser && currentUser.username === user.username) { %>
+                <% if (currentUser && user && currentUser.username === user.username) { %>
                     <hr>
                     <div>
                         <h3>Edit info</h3>

@@ -56,7 +56,7 @@ function DbHandler() {
                 Users.update({username: req.user.username}, {$push: {books: newBook._id} }, (err) => {
                     if (err) console.log("Problem updating the user data");
                     else {
-                        res.send(newBook);
+                        res.redirect("/profile");
                     }
                 });
             }
